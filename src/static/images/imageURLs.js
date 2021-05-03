@@ -1,0 +1,1 @@
+export const imageURLs = ['/images/airpods.jpg', '/images/alexa.jpg', '/images/camera.jpg', '/images/mouse.jpg', '/images/phone.jpg', '/images/playstation.jpg']
