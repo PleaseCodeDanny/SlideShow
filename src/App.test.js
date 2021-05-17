@@ -32,7 +32,7 @@ const initialState = {
 
 test('renders footer correctly', () => {
   render(<Footer/>, {initialState, store})
-  expect(screen.getByText(/add mario?/i)).toBeInTheDocument()
-  fireEvent.click(screen.getByText(/Add Mario?/))
-  expect(screen.getByText(/hey, alright/i)).toBeInTheDocument()
+  expect(screen.getByText(/add images?/i)).toBeInTheDocument()
+  fireEvent.click(screen.getByText(/Add images?/))
+  // expect(screen.getByText(/Images added/i)).toBeInTheDocument()
 });

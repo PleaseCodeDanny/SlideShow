@@ -1,17 +1,22 @@
 import React, {useState} from "react";
 import {Button, Container, Row} from "react-bootstrap";
-import {useDispatch} from "react-redux";
-import {addMarioToImageList} from "../actions/imageActions";
+import axios from "axios";
+
 
 
 
 let Footer = (_) => {
-    const [marioAdded, setMarioAdded] = useState(false);
-    const dispatch = useDispatch()
+    const [images, setImages] = useState([]);
     const onClickHandler = (e) => {
         e.preventDefault()
-        dispatch(addMarioToImageList())
-        setMarioAdded(true)
+        const sendGetRequest =  async () => {
+            return axios.get("/api/products/");
+
+        }
+        sendGetRequest()
+            .then(({data}) => {
+                setImages(data)
+            })
     }
 
     return (
@@ -22,8 +27,9 @@ let Footer = (_) => {
                         type={'button'}
                         onClick={onClickHandler}
                     >
-                        {marioAdded ? 'Hey, alright' :'Add Mario?'}
+                        {images ? 'Add images?' : 'Images added'}
                     </Button>
+                    {images.length > 0 && images.map(image => <p key={`${image.name}-${image._id}`}>{JSON.stringify(image)}</p>)}
                 </Row>
             </Container>
         </footer>
